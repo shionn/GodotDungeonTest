@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://ccykxmhocdi07"]
+
+[ext_resource type="Script" uid="uid://c21fqbtaflnki" path="res://players.gd" id="1_8uh7m"]
+[ext_resource type="PackedScene" uid="uid://w0gwnhtgpvgy" path="res://addons/kaykit_character_pack_adventures/Characters/gltf/Mage.glb" id="2_6uqi0"]
+[ext_resource type="PackedScene" uid="uid://d2bjyo5lkmj7v" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/floor_dirt_large.gltf.glb" id="3_77dp3"]
+[ext_resource type="PackedScene" uid="uid://dhu2rjr6c0ab6" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/floor_tile_large.gltf.glb" id="4_5tkv4"]
+[ext_resource type="PackedScene" uid="uid://bm3jbyjlwx5qh" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/floor_tile_large_rocks.gltf.glb" id="5_0m0f1"]
+[ext_resource type="PackedScene" uid="uid://q1xe6pkumyuy" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/floor_wood_large.gltf.glb" id="6_b0q6j"]
+[ext_resource type="PackedScene" uid="uid://pcpso1g1yt4j" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/floor_wood_large_dark.gltf.glb" id="7_mhym6"]
+[ext_resource type="PackedScene" uid="uid://b5evmk8i683vq" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_scaffold.gltf.glb" id="8_a3se8"]
+[ext_resource type="PackedScene" uid="uid://1hphg5yilui5" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_open_scaffold.gltf.glb" id="9_uty7l"]
+[ext_resource type="PackedScene" uid="uid://blixcdb4lclr" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_half_endcap.gltf.glb" id="10_45l4g"]
+[ext_resource type="PackedScene" uid="uid://b1li01syrogsg" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_crossing.gltf.glb" id="11_4uo0j"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ppyta"]
+radius = 0.7
+height = 2.4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_77dp3"]
+size = Vector3(3, 1, 3)
+
+[node name="Node3D" type="Node3D" unique_id=1257200261]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1981533427]
+collision_layer = 0
+script = ExtResource("1_8uh7m")
+
+[node name="Mage" parent="CharacterBody3D" unique_id=1844834104 instance=ExtResource("2_6uqi0")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=879088868]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("CapsuleShape3D_ppyta")
+
+[node name="floor_dirt_large_gltf" parent="." unique_id=1564765543 instance=ExtResource("3_77dp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="floor_dirt_large_gltf2" parent="." unique_id=1813709674 instance=ExtResource("3_77dp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+
+[node name="floor_tile_large_gltf" parent="." unique_id=1261415662 instance=ExtResource("4_5tkv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="floor_tile_large_gltf2" parent="." unique_id=1775711741 instance=ExtResource("4_5tkv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="floor_tile_large_gltf3" parent="." unique_id=610544152 instance=ExtResource("4_5tkv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="floor_tile_large_gltf4" parent="." unique_id=1246579888 instance=ExtResource("4_5tkv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
+
+[node name="floor_tile_large_rocks_gltf" parent="." unique_id=642444165 instance=ExtResource("5_0m0f1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+
+[node name="floor_wood_large_gltf" parent="." unique_id=566833671 instance=ExtResource("6_b0q6j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="floor_wood_large_dark_gltf" parent="." unique_id=1442671942 instance=ExtResource("7_mhym6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+
+[node name="wall_scaffold_gltf" parent="." unique_id=997238287 instance=ExtResource("8_a3se8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="wall_open_scaffold_gltf" parent="." unique_id=1719268803 instance=ExtResource("9_uty7l")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 0, 4)
+
+[node name="wall_half_endcap_gltf" parent="." unique_id=425038803 instance=ExtResource("10_45l4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
+
+[node name="wall_half_endcap_gltf2" parent="." unique_id=961983849 instance=ExtResource("10_45l4g")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0, 0)
+
+[node name="wall_crossing_gltf" parent="." unique_id=514770421 instance=ExtResource("11_4uo0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=179173336]
+transform = Transform3D(-0.70710677, -0.1518408, 0.6906116, 0, 0.9766723, 0.21473533, -0.70710677, 0.1518408, -0.6906116, 8, 3, -4)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=613368178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1234023231]
+shape = SubResource("BoxShape3D_77dp3")
