@@ -3,6 +3,8 @@ extends CharacterBody3D
 const RAY_LENGTH = 20.0
 
 @onready var _camera = $"../Camera3D" as Camera3D
+@onready var _floor = $"../Floor" as Node3D
+
 
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("move_left", "move_righ", "move_front", "move_back")
@@ -18,10 +20,9 @@ func _cast() -> void:
 	var query = PhysicsRayQueryParameters3D.create(from,to)
 	var result = get_world_3d().direct_space_state.intersect_ray(query)
 	if !result.is_empty() :
-		
-		if result["collider"] != self :
+		print(result)
+		if (result["collider"] as StaticBody3D).collision_layer & 256 : # layer 9 
 			self.position = result["position"]
-			print(result["position"])
 	
 	
 #func _unhandled_input(event: InputEvent) -> void:

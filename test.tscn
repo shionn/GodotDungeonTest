@@ -11,13 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://1hphg5yilui5" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_open_scaffold.gltf.glb" id="9_uty7l"]
 [ext_resource type="PackedScene" uid="uid://blixcdb4lclr" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_half_endcap.gltf.glb" id="10_45l4g"]
 [ext_resource type="PackedScene" uid="uid://b1li01syrogsg" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_crossing.gltf.glb" id="11_4uo0j"]
+[ext_resource type="PackedScene" uid="uid://bap2uueatnlrn" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_Tsplit.gltf.glb" id="12_5tkv4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ppyta"]
 radius = 0.7
 height = 2.4
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_77dp3"]
-size = Vector3(3, 1, 3)
 
 [node name="Node3D" type="Node3D" unique_id=1257200261]
 
@@ -31,53 +29,63 @@ script = ExtResource("1_8uh7m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 shape = SubResource("CapsuleShape3D_ppyta")
 
-[node name="floor_dirt_large_gltf" parent="." unique_id=1564765543 instance=ExtResource("3_77dp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
-
-[node name="floor_dirt_large_gltf2" parent="." unique_id=1813709674 instance=ExtResource("3_77dp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
-
-[node name="floor_tile_large_gltf" parent="." unique_id=1261415662 instance=ExtResource("4_5tkv4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
-
-[node name="floor_tile_large_gltf2" parent="." unique_id=1775711741 instance=ExtResource("4_5tkv4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
-
-[node name="floor_tile_large_gltf3" parent="." unique_id=610544152 instance=ExtResource("4_5tkv4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
-
-[node name="floor_tile_large_gltf4" parent="." unique_id=1246579888 instance=ExtResource("4_5tkv4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
-
-[node name="floor_tile_large_rocks_gltf" parent="." unique_id=642444165 instance=ExtResource("5_0m0f1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
-
-[node name="floor_wood_large_gltf" parent="." unique_id=566833671 instance=ExtResource("6_b0q6j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
-
-[node name="floor_wood_large_dark_gltf" parent="." unique_id=1442671942 instance=ExtResource("7_mhym6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
-
-[node name="wall_scaffold_gltf" parent="." unique_id=997238287 instance=ExtResource("8_a3se8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
-
-[node name="wall_open_scaffold_gltf" parent="." unique_id=1719268803 instance=ExtResource("9_uty7l")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 0, 4)
-
-[node name="wall_half_endcap_gltf" parent="." unique_id=425038803 instance=ExtResource("10_45l4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
-
-[node name="wall_half_endcap_gltf2" parent="." unique_id=961983849 instance=ExtResource("10_45l4g")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0, 0)
-
-[node name="wall_crossing_gltf" parent="." unique_id=514770421 instance=ExtResource("11_4uo0j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=179173336]
 transform = Transform3D(-0.70710677, -0.1518408, 0.6906116, 0, 0.9766723, 0.21473533, -0.70710677, 0.1518408, -0.6906116, 8, 3, -4)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=613368178]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+[node name="Floor" type="Node3D" parent="." unique_id=1469732556]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1234023231]
-shape = SubResource("BoxShape3D_77dp3")
+[node name="Wall" type="Node3D" parent="." unique_id=1291571374]
+
+[node name="wall_Tsplit_gltf" parent="Wall" unique_id=145990893 instance=ExtResource("12_5tkv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+
+[node name="wall_scaffold_gltf" parent="Wall" unique_id=997238287 instance=ExtResource("8_a3se8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="wall_scaffold_gltf2" parent="Wall" unique_id=22046192 instance=ExtResource("8_a3se8")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0, 0)
+
+[node name="wall_open_scaffold_gltf" parent="Wall" unique_id=1719268803 instance=ExtResource("9_uty7l")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 0, 4)
+
+[node name="wall_half_endcap_gltf" parent="Wall" unique_id=425038803 instance=ExtResource("10_45l4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
+
+[node name="wall_half_endcap_gltf3" parent="Wall" unique_id=66182558 instance=ExtResource("10_45l4g")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0, 4)
+
+[node name="wall_half_endcap_gltf2" parent="Wall" unique_id=961983849 instance=ExtResource("10_45l4g")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0, 0)
+
+[node name="wall_crossing_gltf" parent="Wall" unique_id=514770421 instance=ExtResource("11_4uo0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=122559979]
+collision_layer = 256
+
+[node name="floor_dirt_large_gltf" parent="StaticBody3D" unique_id=1564765543 instance=ExtResource("3_77dp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="floor_dirt_large_gltf2" parent="StaticBody3D" unique_id=1813709674 instance=ExtResource("3_77dp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+
+[node name="floor_tile_large_gltf" parent="StaticBody3D" unique_id=1261415662 instance=ExtResource("4_5tkv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="floor_tile_large_gltf2" parent="StaticBody3D" unique_id=1775711741 instance=ExtResource("4_5tkv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="floor_tile_large_gltf3" parent="StaticBody3D" unique_id=610544152 instance=ExtResource("4_5tkv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="floor_tile_large_gltf4" parent="StaticBody3D" unique_id=1246579888 instance=ExtResource("4_5tkv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
+
+[node name="floor_tile_large_rocks_gltf" parent="StaticBody3D" unique_id=642444165 instance=ExtResource("5_0m0f1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+
+[node name="floor_wood_large_gltf" parent="StaticBody3D" unique_id=566833671 instance=ExtResource("6_b0q6j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="floor_wood_large_dark_gltf" parent="StaticBody3D" unique_id=1442671942 instance=ExtResource("7_mhym6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)

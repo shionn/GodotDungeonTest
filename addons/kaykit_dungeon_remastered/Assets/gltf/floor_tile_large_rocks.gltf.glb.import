@@ -40,7 +40,8 @@ materials/extract_path=""
 _subresources={
 "nodes": {
 "PATH:floor_tile_large_rocks": {
-"generate/physics": true
+"generate/physics": true,
+"physics/layer": 257
 }
 }
 }
