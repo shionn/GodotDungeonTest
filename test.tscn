@@ -23,14 +23,15 @@ height = 2.4
 collision_layer = 0
 script = ExtResource("1_8uh7m")
 
-[node name="Mage" parent="CharacterBody3D" unique_id=1844834104 instance=ExtResource("2_6uqi0")]
+[node name="Character" parent="CharacterBody3D" unique_id=1844834104 instance=ExtResource("2_6uqi0")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=879088868]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 shape = SubResource("CapsuleShape3D_ppyta")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=179173336]
-transform = Transform3D(-0.70710677, -0.1518408, 0.6906116, 0, 0.9766723, 0.21473533, -0.70710677, 0.1518408, -0.6906116, 8, 3, -4)
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=294586565]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.6, 0.4)
+near = 0.2
 
 [node name="Floor" type="Node3D" parent="." unique_id=1469732556]
 
