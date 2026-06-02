@@ -17,6 +17,20 @@
 radius = 0.7
 height = 2.4
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_5tkv4"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_0m0f1"]
+vertices = PackedVector3Array(3.5, 0, 7.5, -3.5, 0, 7.5, 3.5, 0, -3.5, -3.5, 0, -3.5)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(1, 3, 2)]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_b0q6j"]
+vertices = PackedVector3Array(4.5, 0, 7.5, 3.5, 0, 7.5, 4.5, 0, 4, 3.5, 0, 4)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(1, 3, 2)]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_mhym6"]
+vertices = PackedVector3Array(7.5, 0, 7.5, 4.5, 0, 7.5, 7.5, 0, -3.5, 4.5, 0, -3.5)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(1, 3, 2)]
+
 [node name="Node3D" type="Node3D" unique_id=1257200261]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1981533427]
@@ -33,7 +47,44 @@ shape = SubResource("CapsuleShape3D_ppyta")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.6, 0.4)
 near = 0.2
 
+[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D" unique_id=1881321999]
+transform = Transform3D(-0.70710677, -0.49999994, 0.4999999, 0, 0.70710677, 0.7071067, -0.70710665, 0.5, -0.49999997, 0, 2, 0)
+spring_length = 5.0
+
+[node name="Camera3D2" type="Camera3D" parent="CharacterBody3D/SpringArm3D" unique_id=934303352]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+current = true
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D" unique_id=1282643255]
+
 [node name="Floor" type="Node3D" parent="." unique_id=1469732556]
+
+[node name="floor_dirt_large_gltf" parent="Floor" unique_id=1564765543 instance=ExtResource("3_77dp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="floor_dirt_large_gltf2" parent="Floor" unique_id=1813709674 instance=ExtResource("3_77dp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+
+[node name="floor_tile_large_gltf" parent="Floor" unique_id=1261415662 instance=ExtResource("4_5tkv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="floor_tile_large_gltf2" parent="Floor" unique_id=1775711741 instance=ExtResource("4_5tkv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="floor_tile_large_gltf3" parent="Floor" unique_id=610544152 instance=ExtResource("4_5tkv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="floor_tile_large_gltf4" parent="Floor" unique_id=1246579888 instance=ExtResource("4_5tkv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
+
+[node name="floor_tile_large_rocks_gltf" parent="Floor" unique_id=642444165 instance=ExtResource("5_0m0f1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+
+[node name="floor_wood_large_gltf" parent="Floor" unique_id=566833671 instance=ExtResource("6_b0q6j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="floor_wood_large_dark_gltf" parent="Floor" unique_id=1442671942 instance=ExtResource("7_mhym6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
 
 [node name="Wall" type="Node3D" parent="." unique_id=1291571374]
 
@@ -61,32 +112,17 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 
 [node name="wall_crossing_gltf" parent="Wall" unique_id=514770421 instance=ExtResource("11_4uo0j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=122559979]
-collision_layer = 256
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1911564348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+navigation_mesh = SubResource("NavigationMesh_5tkv4")
 
-[node name="floor_dirt_large_gltf" parent="StaticBody3D" unique_id=1564765543 instance=ExtResource("3_77dp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=1512878129]
 
-[node name="floor_dirt_large_gltf2" parent="StaticBody3D" unique_id=1813709674 instance=ExtResource("3_77dp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+[node name="NavigationRegion3D2" type="NavigationRegion3D" parent="NavigationRegion3D/MeshInstance3D" unique_id=374193365]
+navigation_mesh = SubResource("NavigationMesh_0m0f1")
 
-[node name="floor_tile_large_gltf" parent="StaticBody3D" unique_id=1261415662 instance=ExtResource("4_5tkv4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="NavigationRegion3D/MeshInstance3D" unique_id=2094949257]
+navigation_mesh = SubResource("NavigationMesh_b0q6j")
 
-[node name="floor_tile_large_gltf2" parent="StaticBody3D" unique_id=1775711741 instance=ExtResource("4_5tkv4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
-
-[node name="floor_tile_large_gltf3" parent="StaticBody3D" unique_id=610544152 instance=ExtResource("4_5tkv4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
-
-[node name="floor_tile_large_gltf4" parent="StaticBody3D" unique_id=1246579888 instance=ExtResource("4_5tkv4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
-
-[node name="floor_tile_large_rocks_gltf" parent="StaticBody3D" unique_id=642444165 instance=ExtResource("5_0m0f1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
-
-[node name="floor_wood_large_gltf" parent="StaticBody3D" unique_id=566833671 instance=ExtResource("6_b0q6j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
-
-[node name="floor_wood_large_dark_gltf" parent="StaticBody3D" unique_id=1442671942 instance=ExtResource("7_mhym6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+[node name="NavigationRegion3D3" type="NavigationRegion3D" parent="NavigationRegion3D/MeshInstance3D" unique_id=348041251]
+navigation_mesh = SubResource("NavigationMesh_mhym6")
