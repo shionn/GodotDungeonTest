@@ -41,6 +41,7 @@ _subresources={
 "nodes": {
 "PATH:floor_wood_large_dark": {
 "generate/physics": true,
+"physics/layer": 256,
 "physics/shape_type": 3,
 "primitive/position": Vector3(0, -0.025, 0),
 "primitive/size": Vector3(4, 0.15, 4)

@@ -41,7 +41,10 @@ _subresources={
 "nodes": {
 "PATH:floor_tile_large_rocks": {
 "generate/physics": true,
-"physics/layer": 257
+"physics/layer": 257,
+"physics/shape_type": 3,
+"primitive/position": Vector3(0, -0.025, 0),
+"primitive/size": Vector3(4, 0.15, 4)
 }
 }
 }
