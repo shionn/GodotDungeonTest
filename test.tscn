@@ -64,7 +64,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/FpsCamera" unique_id=294586565]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.4)
 current = true
-near = 0.2
+near = 0.1
 
 [node name="Floor" type="Node3D" parent="." unique_id=1469732556]
 
@@ -126,7 +126,24 @@ transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -3.6999998, 
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Wall/torch_mounted_gltf" unique_id=207918458]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.39999986, 0.29999995)
-light_size = 0.5
+light_size = 1.0
+light_specular = 0.0
+shadow_enabled = true
+shadow_blur = 0.5
+shadow_caster_mask = 4294967293
+omni_range = 8.0
+
+[node name="torch_mounted_gltf2" parent="Wall" unique_id=1894733816 instance=ExtResource("13_0m0f1")]
+transform = Transform3D(1.0000001, 0, -4.3711392e-08, 0, 1, 0, 4.3711392e-08, 0, 1.0000001, 4, 2.5, 3.7)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Wall/torch_mounted_gltf2" unique_id=1846145232]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.39999986, 0.29999995)
+light_size = 1.0
+light_specular = 0.0
+shadow_enabled = true
+shadow_blur = 0.5
+shadow_caster_mask = 4294967293
+omni_range = 8.0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1911564348]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
