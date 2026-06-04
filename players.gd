@@ -2,13 +2,17 @@ extends CharacterBody3D
 
 const RAY_LENGTH = 20.0
 
-@onready var _camera = $SpringArm3D/Camera3D2 as Camera3D
-@onready var _floor = $"../Floor" as Node3D
 @onready var _character = $Character as Node3D
+@onready var _animation = $Character/AnimationPlayer as AnimationPlayer
+
+@onready var _topDownArmCamera = $TopDownCamera as SpringArm3D
+@onready var _topDownCamera = $TopDownCamera/Camera3D as Camera3D
+@onready var _fpsArmCamera = $FpsCamera as SpringArm3D
+@onready var _fpsCamera = $FpsCamera/Camera3D as Camera3D
+
+@onready var _floor = $"../Floor" as Node3D
 @onready var _head = $Character/Rig/Skeleton3D/Mage_Head as MeshInstance3D
 @onready var _headBNone = $Character/Rig/Skeleton3D/head as BoneAttachment3D
-@onready var _animation = $Character/AnimationPlayer as AnimationPlayer
-@onready var _springArm = $SpringArm3D as SpringArm3D
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 
 func _ready() -> void:
@@ -33,7 +37,6 @@ func _physics_process(delta: float) -> void:
 		_animation.play("Walking_A")
 		print(global_position)
 		print(next_path_position)
-		#print(velocity)
 	else : 
 		_animation.play("Idle")
 		velocity = Vector3.ZERO
@@ -41,10 +44,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _cast() -> void:
+	var camera = get_viewport().get_camera_3d()
 	if (Input.is_action_just_released("move")) :
 		var mouse = get_viewport().get_mouse_position()
-		var from = _camera.project_ray_origin(mouse)
-		var to = from + _camera.project_ray_normal(mouse) * RAY_LENGTH
+		var from = camera.project_ray_origin(mouse)
+		var to = from + camera.project_ray_normal(mouse) * RAY_LENGTH
 		var query = PhysicsRayQueryParameters3D.create(from,to)
 		var result = get_world_3d().direct_space_state.intersect_ray(query)
 		if !result.is_empty() :
@@ -71,10 +75,19 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		Input.warp_mouse(_previous_mouse_position)
 	elif event is InputEventMouseMotion and Input.is_action_pressed("move_camera"):
-		_springArm.rotation.x -= event.relative.y * mouse_sensitivity
-		_springArm.rotation.x = clampf(_springArm.rotation.x, -tilt_limit, tilt_limit)
-		_springArm.rotation.y += -event.relative.x * mouse_sensitivity
-		#_headBNone.rotation.x = -_camera.rotation.x 
-		#_headBNone.rotation.y = _camera.rotation.y 
-		#_headBNone.rotation.x += event.relative.y * mouse_sensitivity
-		#_headBNone.rotation.y += -event.relative.x * mouse_sensitivity
+		if _topDownCamera.current :
+			_topDownArmCamera.rotation.x -= event.relative.y * mouse_sensitivity
+			_topDownArmCamera.rotation.x = clampf(_topDownArmCamera.rotation.x, -tilt_limit, tilt_limit)
+			_topDownArmCamera.rotation.y += -event.relative.x * mouse_sensitivity
+		elif _fpsCamera.current:
+			_fpsArmCamera.rotation.x += event.relative.y * mouse_sensitivity
+			_fpsArmCamera.rotation.x = clampf(_fpsArmCamera.rotation.x, -tilt_limit, tilt_limit)
+			_fpsArmCamera.rotation.y += -event.relative.x * mouse_sensitivity
+		
+	if event.is_action_pressed("toggle_camera") :
+		if _topDownCamera.current :
+			_topDownCamera.current = false
+			_fpsCamera.current = true
+		elif _fpsCamera.current:
+			_topDownCamera.current = true
+			_fpsCamera.current = false

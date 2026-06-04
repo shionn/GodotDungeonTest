@@ -48,19 +48,22 @@ script = ExtResource("1_8uh7m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 shape = SubResource("CapsuleShape3D_ppyta")
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=294586565]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.6, 0.4)
-near = 0.2
-
-[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D" unique_id=1881321999]
+[node name="TopDownCamera" type="SpringArm3D" parent="CharacterBody3D" unique_id=1881321999]
 transform = Transform3D(-0.70710677, -0.49999994, 0.4999999, 0, 0.70710677, 0.7071067, -0.70710665, 0.5, -0.49999997, 0, 2, 0)
 spring_length = 5.0
 
-[node name="Camera3D2" type="Camera3D" parent="CharacterBody3D/SpringArm3D" unique_id=934303352]
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/TopDownCamera" unique_id=934303352]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
-current = true
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D" unique_id=1282643255]
+
+[node name="FpsCamera" type="SpringArm3D" parent="CharacterBody3D" unique_id=964895102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/FpsCamera" unique_id=294586565]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.4)
+current = true
+near = 0.2
 
 [node name="Floor" type="Node3D" parent="." unique_id=1469732556]
 
