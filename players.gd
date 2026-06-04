@@ -25,11 +25,29 @@ func _ready() -> void:
 	
 	
 var movement_speed: float = 4.0
+var nav = false;
 func _physics_process(delta: float) -> void:
 	
 	_cast()
-	
-	if !navigation_agent.is_navigation_finished():
+	var input_dir := Input.get_vector("move_left", "move_right", "move_front", "move_back")
+	if input_dir :
+		nav = false
+		var cam_basis := get_viewport().get_camera_3d().get_global_transform().basis
+		var direction := cam_basis * Vector3(input_dir.x, 0, input_dir.y)
+		direction.y = 0
+		direction = direction.normalized();
+		
+		if direction:
+			velocity.x = direction.x * movement_speed
+			velocity.z = direction.z * movement_speed
+			_character.rotation.y = atan2(direction.x,direction.z)
+			_animation.play("Walking_A")
+			print("A")
+		else:
+			velocity = Vector3.ZERO
+			_animation.play("Idle")
+			print("B")
+	elif !navigation_agent.is_navigation_finished() and nav:
 		var current_agent_position: Vector3 = global_position
 		var next_path_position: Vector3 = navigation_agent.get_next_path_position()
 		_character.look_at(next_path_position,Vector3.UP,true)
@@ -37,9 +55,11 @@ func _physics_process(delta: float) -> void:
 		_animation.play("Walking_A")
 		print(global_position)
 		print(next_path_position)
+		print("C")
 	else : 
 		_animation.play("Idle")
 		velocity = Vector3.ZERO
+		print("D")
 			
 	move_and_slide()
 
@@ -57,6 +77,7 @@ func _cast() -> void:
 				navigation_agent.set_target_position(result["position"])
 				print(global_position)
 				print(result["position"])
+				nav = true
 	
 	
 #func _unhandled_input(event: InputEvent) -> void:
