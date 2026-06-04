@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://b1li01syrogsg" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_crossing.gltf.glb" id="11_4uo0j"]
 [ext_resource type="PackedScene" uid="uid://bap2uueatnlrn" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_Tsplit.gltf.glb" id="12_5tkv4"]
 [ext_resource type="PackedScene" uid="uid://nbw72x3w7lui" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/torch_mounted.gltf.glb" id="13_0m0f1"]
+[ext_resource type="PackedScene" uid="uid://c2eaolfr0bt" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/table_medium.gltf.glb" id="14_a3se8"]
+[ext_resource type="PackedScene" uid="uid://cf1r3weng3bu7" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/sword_shield.gltf.glb" id="15_uty7l"]
+[ext_resource type="PackedScene" uid="uid://c3shufguhyna1" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/key.gltf.glb" id="16_45l4g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ppyta"]
 radius = 0.7
@@ -59,10 +62,10 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D" unique_id=1282643255]
 
 [node name="FpsCamera" type="SpringArm3D" parent="CharacterBody3D" unique_id=964895102]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/FpsCamera" unique_id=294586565]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.4)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 current = true
 near = 0.1
 
@@ -94,6 +97,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
 
 [node name="floor_wood_large_dark_gltf" parent="Floor" unique_id=1442671942 instance=ExtResource("7_mhym6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+
+[node name="table_medium_gltf" parent="Floor" unique_id=718972938 instance=ExtResource("14_a3se8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0, 1.9999995)
+
+[node name="key_gltf" parent="Floor/table_medium_gltf" unique_id=1931378353 instance=ExtResource("16_45l4g")]
+transform = Transform3D(1.9106855e-15, 1.0000001, 4.371139e-08, 4.371138e-08, -4.371139e-08, 0.9999999, 1, 0, -4.3711385e-08, -0.5, 1.05, -0.39999962)
 
 [node name="Wall" type="Node3D" parent="." unique_id=1291571374]
 
@@ -144,6 +153,9 @@ shadow_enabled = true
 shadow_blur = 0.5
 shadow_caster_mask = 4294967293
 omni_range = 8.0
+
+[node name="sword_shield_gltf" parent="Wall" unique_id=57827255 instance=ExtResource("15_uty7l")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 2, 7.699999)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1911564348]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
